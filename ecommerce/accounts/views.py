@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
+from django.contrib import messages
 from .forms import CustomUserCreationForm
 
 def register(request):
@@ -22,7 +23,9 @@ def custom_login(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # Redirect to home after login
+            return redirect('home')  # Redirect to home page
+        else:
+            messages.error(request, "Invalid email or password.")  # Add error message
     return render(request, 'accounts/login.html')
 
 class CustomPasswordResetView(PasswordResetView):

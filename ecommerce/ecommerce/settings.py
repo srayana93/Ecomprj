@@ -26,8 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',  # Your custom accounts app
+    'shop',
     'crispy_forms',  # Optional: if using crispy forms
+    
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # or 'bootstrap5' depending on your setup
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -58,6 +62,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = "ecommerce.wsgi.application"
 
